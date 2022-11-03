@@ -1,9 +1,16 @@
 <?php
+namespace App\Model;
 
-abstract class Stable {
+class Stable {
     protected string $name;
     protected Adress $adress;
     protected Manager $manager;
+
+    /**
+     * @param string $name
+     * @param Adress $adress
+     * @param Manager $manager
+     */
 
     public function __construct(string $name, Adress $adress, Manager $manager)
     {
@@ -66,11 +73,6 @@ abstract class Stable {
         return $this;
     }
 
-    /**
-     * @param string $name
-     * @param Adress $adress
-     * @param Manager $manager
-     */
 
 
 

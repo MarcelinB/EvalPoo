@@ -1,19 +1,20 @@
 <?php
+namespace App\Model;
 
-final class Adress {
+class Adress {
 
     protected int $adress;
     protected string $street;
-    protected string $postCode;
+    protected int $postCode;
     protected string $city;
 
     /**
      * @param int $adress
      * @param string $street
-     * @param string $postCode
+     * @param int $postCode
      * @param string $city
      */
-    public function __construct(int $adress, string $street, string $postCode, string $city)
+    public function __construct(int $adress, string $street, int $postCode, string $city)
     {
         $this->adress = $adress;
         $this->street = $street;
@@ -58,18 +59,18 @@ final class Adress {
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getPostCode(): string
+    public function getPostCode(): int
     {
         return $this->postCode;
     }
 
     /**
-     * @param string $postCode
+     * @param int $postCode
      * @return Adress
      */
-    public function setPostCode(string $postCode): Adress
+    public function setPostCode(int $postCode): Adress
     {
         $this->postCode = $postCode;
         return $this;
