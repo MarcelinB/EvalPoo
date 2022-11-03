@@ -19,6 +19,10 @@ class Stable {
         $this->setManager($manager);
     }
 
+    public function __toString():string {
+        return "{$this->getName()}";
+    }
+
     /**
      * @return string
      */

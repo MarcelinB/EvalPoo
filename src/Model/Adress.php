@@ -21,6 +21,9 @@ class Adress {
         $this->postCode = $postCode;
         $this->city = $city;
     }
+    public function __toString():string {
+        return "{$this->getAdress()} {$this->getStreet()} {$this->getPostCode()} {$this->getCity()}";
+    }
 
     /**
      * @return int

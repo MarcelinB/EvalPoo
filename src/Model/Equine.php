@@ -2,27 +2,28 @@
 namespace App\Model;
 use Exception;
 
-class Equine extends Animal {
+abstract class Equine extends Animal {
 
-    protected static int $id;
+    protected static string $id = '';
     protected string $color;
     protected int $water;
-    protected Rider $rider;
-    protected string $category;
+
 
     /**
+     *
      * @param string $color
      * @param int $water
-     * @param Rider $rider
-     * @param string $category
+     * @param $name
      */
-    public function __construct(string $color, int $water, Rider $rider, string $category)
+    public function __construct(string $color, int $water, $name)
     {
+        parent::__construct( $name);
         $this->setColor($color);
         $this->setWater($water);
-        $this->setRider($rider);
-        $this->setCategory($category);
+        //$this->setId();
+
     }
+
 
 
     /**
@@ -33,13 +34,11 @@ class Equine extends Animal {
         return self::$id;
     }
 
-    /**
-     * @param int $id
-     */
-    public static function setId(int $id): void
+
+    /*public function setId()
     {
-        self::$id = $id;
-    }
+        self::$id = '000' . substr($this->getName(), 0, 1) . substr($this->getColor(), 0, 1) . strval(self::$id + 1);
+    }*/
 
     /**
      * @return string
@@ -94,31 +93,5 @@ class Equine extends Animal {
         $this->rider = $rider;
         return $this;
     }
-
-    /**
-     * @return string
-     */
-    public function getCategory(): string
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param string $category
-     * @return Equine
-     */
-    public function setCategory(string $category): Equine
-    {
-        $tCategory = ['Sheitland', 'Poney', 'Horse'];
-        foreach ($tCategory as $cat){
-            if($category === $cat){
-                $this->category = $category;
-                return $this;
-            }
-        }
-        throw new Exception('CATEGORY NOT VALID');
-    }
-
-
 
 }
