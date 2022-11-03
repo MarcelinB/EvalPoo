@@ -13,7 +13,7 @@ $manager = new Manager('LEMANAGERBG', $adresse);
 $stable1 = new Stable('LECURIE', $adresse, $manager);
 $adresse2 = new Adress(15, 'rue de la vie', 14000, 'Caen');
 $c1 = new Sheitland('Alzan', 20, 'BELLEBETE');
-$c2 = new Sheitland('Alzan', 40, 'BGBG');
+$c2 = new Sheitland('Pie', 40, 'BGBG');
 $tabHorses = [$c1, $c2];
 
 

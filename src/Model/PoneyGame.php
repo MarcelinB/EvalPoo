@@ -1,5 +1,5 @@
 <?php
 namespace App\Model;
-interface Jump {
-    public function playJump();
+interface PoneyGame {
+    public function playPoneyGame();
 }

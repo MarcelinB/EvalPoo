@@ -1,13 +1,12 @@
 <?php
 namespace App\Model;
-use Exception;
+
 
 abstract class Equine extends Animal {
 
     protected static string $id = '';
     protected string $color;
     protected int $water;
-
 
     /**
      *

@@ -1,7 +1,7 @@
 <?php
 namespace App\Model;
 
-class Pony extends Equine implements Jump {
+class Pony extends Equine implements PoneyGame, Training {
 
     public function __construct($color, $water, $rider,$name)
     {
@@ -11,5 +11,15 @@ class Pony extends Equine implements Jump {
     public function playJump()
     {
         // TODO: Implement playJump() method.
+    }
+
+    public function playPoneyGame()
+    {
+        // TODO: Implement playPoneyGame() method.
+    }
+
+    public function Training()
+    {
+        // TODO: Implement Training() method.
     }
 }

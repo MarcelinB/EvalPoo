@@ -18,8 +18,8 @@ class Rider extends Human {
     }
 
     public function __toString():string{
-        return "Je suis {$this->getName()}, jabite au {$this->getAdress()->__toString()} je travail a {$this->getStable()->__toString()} et j'ai" . count($this->myEquine) . " 2 belles bêtes -->
-        {$this->myEquineToString()}";
+        return "Je suis {$this->getName()}, mon adresse est {$this->getAdress()->__toString()} je travail a {$this->getStable()->__toString()} et j'ai " . count($this->myEquine) . " belles bêtes -->
+        \n {$this->myEquineToString()}";
     }
 
     public function myEquineToString():string{
