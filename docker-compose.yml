@@ -42,8 +42,8 @@ services:
       - caddy_config:/config
     ports:
       # HTTP
-      - target: 80
-        published: ${HTTP_PORT:-80}
+      - target: 90
+        published: ${HTTP_PORT:-90}
         protocol: tcp
       # HTTPS
       - target: 443
