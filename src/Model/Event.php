@@ -18,11 +18,6 @@ abstract class Event {
      */
     protected int $maxWater;
 
-    /**
-     * @var array
-     */
-    protected array $participatingEquine = [];
-
 
     /**
      * @param Adress $adress
@@ -30,13 +25,12 @@ abstract class Event {
      * @param int $maxCommitments
      * @param int $maxWater
      */
-    public function __construct(Adress $adress, string $name, int $maxCommitments, int $maxWater, array $participatingEquine = [])
+    public function __construct(Adress $adress, string $name, int $maxCommitments, int $maxWater)
     {
         $this->setAdress($adress);
         $this->setName($name);
         $this->setMaxCommitments($maxCommitments);
         $this->setMaxWater($maxWater);
-        $this->setParticipatingEquine($participatingEquine);
     }
 
     /**
@@ -110,24 +104,5 @@ abstract class Event {
         $this->maxWater = $maxWater;
         return $this;
     }
-
-    /**
-     * @return array
-     */
-    public function getParticipatingEquine(): array
-    {
-        return $this->participatingEquine;
-    }
-
-    /**
-     * @param array $participatingEquine
-     * @return Event
-     */
-    public function setParticipatingEquine(array $participatingEquine): Event
-    {
-        $this->participatingEquine = $participatingEquine;
-        return $this;
-    }
-
 
 }
