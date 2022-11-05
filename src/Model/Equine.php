@@ -4,40 +4,41 @@ namespace App\Model;
 
 abstract class Equine extends Animal {
 
-    protected static string $id = '';
+    protected string $id ;
     protected string $color;
     protected int $water;
+    public static int $i = 0;
 
     /**
      *
      * @param string $color
      * @param int $water
-     * @param $name
+     * @param string $name
      */
-    public function __construct(string $color, int $water, $name)
+    public function __construct(string $color, int $water, string $name)
     {
+        self::$i++;
         parent::__construct( $name);
         $this->setColor($color);
         $this->setWater($water);
-        //$this->setId();
-
+        $this->setId();
     }
-
-
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
 
     /**
-     * @return int
+     * @return Equine
      */
-    public static function getId(): int
+    public function setId(): Equine
     {
-        return self::$id;
+        $this->id = '000' . substr($this->getName(), 0, 1) . substr($this->getColor(), 0, 1) . self::$i;
+        return $this;
     }
-
-
-    /*public function setId()
-    {
-        self::$id = '000' . substr($this->getName(), 0, 1) . substr($this->getColor(), 0, 1) . strval(self::$id + 1);
-    }*/
 
     /**
      * @return string
