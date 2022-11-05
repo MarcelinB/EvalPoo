@@ -25,10 +25,13 @@ class JumpCompetition extends Event implements CompetitionValidity{
     {
         if(count($arrayEquine) > $this->getMaxCommitments()) throw new Exception("Vous ne pouvez pas inscrire plus de chevaux qu'il n'y a de places");
         if(count($this->getParticipatingEquine())>=$this->getMaxCommitments()) throw new Exception('Compétition déjà complète');
+        foreach ($this->getParticipatingEquine() as $alreadyParticipating){
+            if ($alreadyParticipating->getId() === $equine->getId()) throw new Exception("L'équidé {$equine->getName()} avec l'id {$equine->getId()} est déjà inscrit à la compétition");
+        }
 
         return true;
     }
-    
+
     /**
      * Register an array of horses (can be single) for the competition
      * @param array $arrayEquine

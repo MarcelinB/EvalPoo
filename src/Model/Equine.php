@@ -1,8 +1,9 @@
 <?php
 namespace App\Model;
 
+use Exception;
 
-abstract class Equine extends Animal {
+abstract class Equine extends Animal implements ColorValidity {
 
     protected string $id ;
     protected string $color;
@@ -14,6 +15,7 @@ abstract class Equine extends Animal {
      * @param string $color
      * @param int $water
      * @param string $name
+     * @throws Exception
      */
     public function __construct(string $color, int $water, string $name)
     {
@@ -23,6 +25,18 @@ abstract class Equine extends Animal {
         $this->setWater($water);
         $this->setId();
     }
+
+    /**
+     * @throws Exception
+     */
+    public function checkColor(string $color):bool {
+        $authorizedColors = ['Alzan', 'Bai', 'Pie', 'Grey', 'White'];
+        if (in_array($color, $authorizedColors, true)) {
+            return true;
+        }
+        else throw new Exception("Couleur non authorisée");
+    }
+
     /**
      * @return string
      */
@@ -36,7 +50,7 @@ abstract class Equine extends Animal {
      */
     public function setId(): Equine
     {
-        $this->id = '000' . substr($this->getName(), 0, 1) . substr($this->getColor(), 0, 1) . self::$i;
+        $this->id = '000-' . substr($this->getName(), 0, 1)  . '-'. substr($this->getColor(), 0, 1) . '-' . self::$i;
         return $this;
     }
 
@@ -51,10 +65,14 @@ abstract class Equine extends Animal {
     /**
      * @param string $color
      * @return Equine
+     * @throws Exception
      */
     public function setColor(string $color): Equine
     {
-        $this->color = $color;
+        if($this->checkColor($color)){
+            $this->color = $color;
+            return $this;
+        }
         return $this;
     }
 
@@ -75,23 +93,4 @@ abstract class Equine extends Animal {
         $this->water = $water;
         return $this;
     }
-
-    /**
-     * @return Rider
-     */
-    public function getRider(): Rider
-    {
-        return $this->rider;
-    }
-
-    /**
-     * @param Rider $rider
-     * @return Equine
-     */
-    public function setRider(Rider $rider): Equine
-    {
-        $this->rider = $rider;
-        return $this;
-    }
-
 }
