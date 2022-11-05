@@ -15,6 +15,8 @@ $adresse2 = new Adress(15, 'rue de la vie', 14000, 'Caen');
 $c1 = new Sheitland('Alzan', 20, 'BELLEBETE');
 $c2 = new Sheitland('Pie', 40, 'BGBG');
 $tabHorses = [$c1, $c2];
+$c3 = new Sheitland('OUAIS', 40, 'OUAIS');
+$tabHorses[] = $c3;
 
 
 $rider = new Rider('Joe', $adresse2, $stable1, $tabHorses);

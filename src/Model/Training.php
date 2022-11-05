@@ -1,5 +1,6 @@
 <?php
 namespace App\Model;
-interface Training {
+
+interface Training  {
     public function Training();
 }
