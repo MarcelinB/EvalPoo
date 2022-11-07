@@ -8,10 +8,6 @@ class Pony extends Equine implements PoneyGame, Training {
         parent::__construct($color, $water, $rider, $name);
     }
 
-    public function playJump()
-    {
-        // TODO: Implement playJump() method.
-    }
 
     public function playPoneyGame()
     {

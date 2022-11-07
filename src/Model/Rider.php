@@ -3,13 +3,17 @@ namespace App\Model;
 
 use App\Model\Stable;
 use App\Model\Equine;
+use Exception;
 
 class Rider extends Human {
     protected Stable $stable;
     protected $myEquine = [];
 
 
-    public function __construct($name, $adress, Stable $stable, array $myEquine)
+    /**
+     * @throws Exception
+     */
+    public function __construct($name, $adress, Stable $stable, array $myEquine = [])
     {
         parent::__construct( $name, $adress);
         $this->setStable($stable);
@@ -60,11 +64,15 @@ class Rider extends Human {
     /**
      * @param array $myEquine
      * @return Rider
+     * @throws Exception
      */
     public function setMyEquine(array $myEquine): Rider
     {
-        $this->myEquine = $myEquine;
-        return $this;
+        if(count($myEquine) + count($this->getMyEquine()) <= 5) {
+            $this->myEquine = $myEquine;
+            return $this;
+        }
+        else throw new Exception("Un cavalier ne peut pas avoir plus de 5 chevaux");
     }
 
 }
