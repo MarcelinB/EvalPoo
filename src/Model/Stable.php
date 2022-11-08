@@ -20,7 +20,7 @@ class Stable {
     }
 
     public function __toString():string {
-        return "{$this->getName()}";
+        return "Nom de l'écurie : {$this->getName()}, adresse : {$this->getAdress()->__toString()}";
     }
 
     /**

@@ -3,43 +3,43 @@ namespace App\Model;
 
 class Adress {
 
-    protected int $adress;
+    protected int $number;
     protected string $street;
     protected int $postCode;
     protected string $city;
 
     /**
-     * @param int $adress
+     * @param int $number
      * @param string $street
      * @param int $postCode
      * @param string $city
      */
-    public function __construct(int $adress, string $street, int $postCode, string $city)
+    public function __construct(int $number, string $street, int $postCode, string $city)
     {
-        $this->adress = $adress;
+        $this->number = $number;
         $this->street = $street;
         $this->postCode = $postCode;
         $this->city = $city;
     }
     public function __toString():string {
-        return "{$this->getAdress()} {$this->getStreet()} {$this->getPostCode()} {$this->getCity()}";
+        return "{$this->getNumber()} {$this->getStreet()} {$this->getPostCode()} {$this->getCity()}";
     }
 
     /**
      * @return int
      */
-    public function getAdress(): int
+    public function getNumber(): int
     {
-        return $this->adress;
+        return $this->number;
     }
 
     /**
-     * @param int $adress
+     * @param int $number
      * @return Adress
      */
-    public function setAdress(int $adress): Adress
+    public function setNumber(int $number): Adress
     {
-        $this->adress = $adress;
+        $this->number = $number;
         return $this;
     }
 

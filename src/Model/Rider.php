@@ -7,8 +7,7 @@ use Exception;
 
 class Rider extends Human {
     protected Stable $stable;
-    protected $myEquine = [];
-
+    protected array $myEquine = [];
 
     /**
      * @throws Exception
@@ -18,19 +17,21 @@ class Rider extends Human {
         parent::__construct( $name, $adress);
         $this->setStable($stable);
         $this->setMyEquine($myEquine);
-
     }
 
     public function __toString():string{
-        return "Je suis {$this->getName()}, mon adresse est {$this->getAdress()->__toString()} je travail a {$this->getStable()->__toString()} et j'ai " . count($this->myEquine) . " belles bêtes -->
-        \n {$this->myEquineToString()}";
+        return "Je suis {$this->getName()}, mon adresse est {$this->getAdress()->__toString()} je travail à l'écurie {$this->getStable()->getName()} et j'ai " . count($this->myEquine) . " équidés {$this->myEquineToString()} \n";
     }
 
+    /** Return a string with rider's horses  */
     public function myEquineToString():string{
         $tab = $this->myEquine;
         $str = '';
         foreach ($tab as $t){
-            $str .= " {$t->__toString()}";
+            $str .= " -> \n {$t->__toString()}";
+        }
+        if (count($tab) === 0){
+            return '';
         }
         return $str;
     }

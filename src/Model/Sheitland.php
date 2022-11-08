@@ -7,8 +7,9 @@ class Sheitland extends Equine implements Jump, Training, Cross {
     {
         parent::__construct($color, $water, $name);
     }
-    public function __toString(){
-        return "nom : {$this->getName()}, categorie : Sheiltland, couleur : {$this->getColor()} \n";
+    public function __toString(): string
+    {
+        return "Race : Sheitland, Nom : {$this->getName()}, ID : {$this->getId()}, Couleur : {$this->getColor()}";
     }
 
     /** The horse is juming */
