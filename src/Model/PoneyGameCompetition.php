@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Exception;
 
-class JumpCompetition extends Event {
+class PoneyGameCompetition extends Event {
 
 
     public function __construct(Adress $adress, string $name, int $maxCommitments, int $maxWater, array $participatingEquine = [])
@@ -24,7 +24,7 @@ class JumpCompetition extends Event {
     {
         if(count($arrayEquine) > $this->getMaxCommitments()) throw new Exception("Vous ne pouvez pas inscrire plus de chevaux qu'il n'y a de places");
         if(count($this->getParticipatingEquine())>=$this->getMaxCommitments()) throw new Exception('Compétition déjà complète');
-        if (!method_exists($equine, 'playJump')) throw new Exception("Votre catégorie d'équidé ne peut pas participer à cette compétition");
+        if (!method_exists($equine, 'playPoneyGame')) throw new Exception("Votre catégorie d'équidé ne peut pas participer à cette compétition");
         foreach ($this->getParticipatingEquine() as $alreadyParticipating){
             if ($alreadyParticipating->getId() === $equine->getId()) throw new Exception("L'équidé {$equine->getName()} avec l'id {$equine->getId()} est déjà inscrit à la compétition");
 

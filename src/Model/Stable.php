@@ -4,7 +4,7 @@ namespace App\Model;
 class Stable {
     protected string $name;
     protected Adress $adress;
-    protected Manager $manager;
+    protected ?Manager $manager = null;
 
     /**
      * @param string $name
@@ -12,7 +12,7 @@ class Stable {
      * @param Manager $manager
      */
 
-    public function __construct(string $name, Adress $adress, Manager $manager)
+    public function __construct(string $name, Adress $adress, ?Manager $manager = null)
     {
         $this->setName($name);
         $this->setAdress($adress);
@@ -60,24 +60,21 @@ class Stable {
     }
 
     /**
-     * @return Manager
+     * @return Manager|null
      */
-    public function getManager(): Manager
+    public function getManager(): ?Manager
     {
         return $this->manager;
     }
 
     /**
-     * @param Manager $manager
+     * @param Manager|null $manager
      * @return Stable
      */
-    public function setManager(Manager $manager): Stable
+    public function setManager(?Manager $manager): Stable
     {
         $this->manager = $manager;
         return $this;
     }
-
-
-
 
 }

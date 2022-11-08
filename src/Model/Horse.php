@@ -3,23 +3,26 @@ namespace App\Model;
 
 class Horse extends Equine implements Jump, Training, Cross {
 
-    public function __construct($color, $water, $rider,$name)
+    public function __construct($color, $water,$name)
     {
-        parent::__construct($color, $water, $rider, $name);
+        parent::__construct($color, $water, $name);
     }
 
+    /** The horse is juming */
     public function playJump()
     {
-        // TODO: Implement playJump() method.
+        echo "Youhou i'm jumping like an unicorn";
     }
 
+    /** The horse is playing cross */
     public function playCross()
     {
-        // TODO: Implement playCross() method.
+        echo "Youhou i'm playing cross";
     }
 
-    public function Training()
+    /** The horse is playing training */
+    public function training()
     {
-        // TODO: Implement Training() method.
+        echo "Youhou i'm playing training (like a boss)";
     }
 }

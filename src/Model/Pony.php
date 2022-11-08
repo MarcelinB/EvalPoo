@@ -3,19 +3,20 @@ namespace App\Model;
 
 class Pony extends Equine implements PoneyGame, Training {
 
-    public function __construct($color, $water, $rider,$name)
+    public function __construct($color, $water,$name)
     {
-        parent::__construct($color, $water, $rider, $name);
+        parent::__construct($color, $water, $name);
     }
 
-
+    /** The horse is playing poneyGame */
     public function playPoneyGame()
     {
-        // TODO: Implement playPoneyGame() method.
+        echo "Youhou i'm playing poney game that's so cute";
     }
 
-    public function Training()
+    /** The horse is playing training */
+    public function training()
     {
-        // TODO: Implement Training() method.
+        echo "Youhou i'm playing training (like a boss)";
     }
 }

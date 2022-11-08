@@ -11,18 +11,21 @@ class Sheitland extends Equine implements Jump, Training, Cross {
         return "nom : {$this->getName()}, categorie : Sheiltland, couleur : {$this->getColor()} \n";
     }
 
+    /** The horse is juming */
     public function playJump()
     {
-        // TODO: Implement playJump() method.
+        echo "Youhou i'm jumping like an unicorn";
     }
 
+    /** The horse is playing cross */
     public function playCross()
     {
-        // TODO: Implement playCross() method.
+        echo "Youhou i'm playing cross";
     }
 
-    public function Training()
+    /** The horse is playing training */
+    public function training()
     {
-        // TODO: Implement Training() method.
+        echo "Youhou i'm playing training (like a boss)";
     }
 }
