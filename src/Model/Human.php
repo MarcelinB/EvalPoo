@@ -50,6 +50,4 @@ abstract class Human {
         return $this;
     }
 
-
-
 }

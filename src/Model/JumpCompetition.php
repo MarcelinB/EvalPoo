@@ -16,7 +16,6 @@ class JumpCompetition extends Event implements CompetitionValidity{
         $this->setParticipatingEquine($participatingEquine);
     }
 
-
     /**
      * Check if the horse can register for the event
      * @param Equine $equine
@@ -26,7 +25,6 @@ class JumpCompetition extends Event implements CompetitionValidity{
      */
     public function checkEquineValidity(Equine $equine, array $arrayEquine): bool
     {
-
         if(count($arrayEquine) > $this->getMaxCommitments()) throw new Exception("Vous ne pouvez pas inscrire plus de chevaux qu'il n'y a de places");
         if(count($this->getParticipatingEquine())>=$this->getMaxCommitments()) throw new Exception('Compétition déjà complète');
         if (!method_exists($equine, 'playJump')) throw new Exception("Votre catégorie d'équidé ne peut pas participer à cette compétition");
