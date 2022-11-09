@@ -1,13 +1,23 @@
 <?php
 namespace App\Model;
-
 use Exception;
-
 abstract class Equine extends Animal implements ColorValidity {
 
+    /**
+     * @var string
+     */
     protected string $id ;
+    /**
+     * @var string
+     */
     protected string $color;
+    /**
+     * @var int
+     */
     protected int $water;
+    /**
+     * @var int
+     */
     public static int $i = 0;
 
     /**
@@ -27,6 +37,9 @@ abstract class Equine extends Animal implements ColorValidity {
     }
 
     /**
+     * Check if horse's color is valid
+     * @param string $color
+     * @return bool
      * @throws Exception
      */
     public function checkColor(string $color):bool {

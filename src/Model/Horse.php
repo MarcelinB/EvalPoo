@@ -7,6 +7,10 @@ class Horse extends Equine implements Jump, Training, Cross {
     {
         parent::__construct($color, $water, $name);
     }
+
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return "Race : Cheval, Nom : {$this->getName()}, ID : {$this->getId()}, Couleur : {$this->getColor()}";

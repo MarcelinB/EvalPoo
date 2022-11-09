@@ -6,7 +6,6 @@ use Exception;
 
 class PoneyGameCompetition extends Event {
 
-
     public function __construct(Adress $adress, string $name, int $maxCommitments, int $maxWater, array $participatingEquine = [])
     {
         parent::__construct($adress, $name, $maxCommitments, $maxWater);
@@ -31,5 +30,4 @@ class PoneyGameCompetition extends Event {
         }
         return true;
     }
-
 }

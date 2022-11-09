@@ -19,11 +19,16 @@ class Rider extends Human {
         $this->setMyEquine($myEquine);
     }
 
+    /**
+     * @return string
+     */
     public function __toString():string{
         return "\n Je suis {$this->getName()}, mon adresse est {$this->getAdress()->__toString()} je travail à l'écurie {$this->getStable()->getName()} et j'ai " . count($this->myEquine) . " équidés {$this->myEquineToString()} \n";
     }
 
-    /** Return a string with rider's horses  */
+    /** Return a string with rider's horses
+     *@return string
+     */
     public function myEquineToString():string{
         $tab = $this->myEquine;
         $str = '';
@@ -75,5 +80,4 @@ class Rider extends Human {
         }
         else throw new Exception("Un cavalier ne peut pas avoir plus de 5 chevaux");
     }
-
 }

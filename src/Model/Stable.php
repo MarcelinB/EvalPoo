@@ -2,14 +2,23 @@
 namespace App\Model;
 
 class Stable {
+    /**
+     * @var string
+     */
     protected string $name;
+    /**
+     * @var Adress
+     */
     protected Adress $adress;
+    /**
+     * @var Manager|null
+     */
     protected ?Manager $manager = null;
 
     /**
      * @param string $name
      * @param Adress $adress
-     * @param Manager $manager
+     * @param ?Manager $manager
      */
 
     public function __construct(string $name, Adress $adress, ?Manager $manager = null)
@@ -19,6 +28,9 @@ class Stable {
         $this->setManager($manager);
     }
 
+    /**
+     * @return string
+     */
     public function __toString():string {
         return "Nom de l'écurie : {$this->getName()}, adresse : {$this->getAdress()->__toString()}";
     }

@@ -3,12 +3,10 @@ namespace App\Model;
 abstract class Animal {
     protected string $name;
 
-    /**
-     * @param string $name
-     */
+
     public function __construct(string $name)
     {
-        $this->name = $name;
+        $this->setName($name);
     }
 
     /**
@@ -28,8 +26,4 @@ abstract class Animal {
         $this->name = $name;
         return $this;
     }
-
-
-
-
 }

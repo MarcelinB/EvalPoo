@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Model\Adress;
 use App\Model\CrossCompetition;
 use App\Model\Equine;
@@ -13,32 +14,32 @@ use App\Model\Rider;
 use App\Model\Sheitland;
 use App\Model\Stable;
 use App\Controller\EquideController;
+use App\Controller\AdressController;
+
 
 use App\Model\TrainingCompetition;
+use Error;
 use Exception;
 
 
 class StoryController {
     /**
      * @throws Exception
+     * @throws Error
      */
     public function aGoodStoryForVincentBray():void{
         echo "Bonjour, ceci est le test (en français) pour controller le programme : (j'utiliserai la méthode __toString() des objets pour montrer leurs créations)\n \n";
         echo "-> Commençons par créer 3 objets 'Adress' différents : \n";
-        $adresse1 = new Adress(01, 'Rue du paradis', 14000, 'Caen');
-        $adresse2 = new Adress(99, 'Rue de la vie', 77000, 'Coulommiers');
-        $adresse3 = new Adress(753, 'Rue de la mort', 29200, 'Brest');
-        echo $adresse1->__toString() . "\n";
-        echo $adresse2->__toString() .  "\n";
-        echo $adresse3->__toString() . "\n \n";
+        $adressController = new AdressController();
+        $tAdress = $adressController->createAdressForStory();
         echo "-> Créons maintenant 2 écuries (notons que les écuries peuvent être créées sans managers) \n";
-        $stable1 = new Stable("Ho mon beau cheval", $adresse1);
-        $stable2 = new Stable("What a big Ranch", $adresse2);
+        $stable1 = new Stable("Ho mon beau cheval", $tAdress[0]);
+        $stable2 = new Stable("What a big Ranch", $tAdress[1]);
         echo $stable1->__toString(). "\n";
         echo $stable2->__toString(). "\n \n";
         echo "-> Créons maintenant 2 cavaliers, un pour chaque écurie (pour des raisons pratiques, les cavaliers habiterons dans l'écurie pour ce test) \n";
-        $rider1 = new Rider('Henry', $adresse1, $stable1);
-        $rider2 = new Rider('Jean-Paul', $adresse2, $stable2);
+        $rider1 = new Rider('Henry', $tAdress[0], $stable1);
+        $rider2 = new Rider('Jean-Paul', $tAdress[1], $stable2);
         echo $rider1->__toString();
         echo $rider2->__toString() . "\n";
         echo "Notons que pour l'instant nos cavaliers n'ont pas d'équidés en leurs possession, quelle hérésie ! Remédions à cela et créons 13 équidés de races différentes et de couleur différentes. \n"
@@ -70,10 +71,10 @@ class StoryController {
         echo $rider2->__toString() . "\n";
 
         echo "Maintenant créons des 3 compétitions (pour des raisons pratiques elle auront la même adresse) \n" ;
-        $jumpComp = new JumpCompetition($adresse3, 'JumpCompetition', 8, 22);
-        $poneyGameComp = new PoneyGameCompetition($adresse3, 'PonyGameCompetition', 3, 16);
-        $crossComeptition = new CrossCompetition($adresse3, 'CrossCompetition', 5, 22);
-        $trainingCompetition = new TrainingCompetition($adresse3, 'TrainingCompetition', 10, 22);
+        $jumpComp = new JumpCompetition($tAdress[2], 'JumpCompetition', 8, 100);
+        $poneyGameComp = new PoneyGameCompetition($tAdress[2], 'PonyGameCompetition', 3, 16);
+        $crossComeptition = new CrossCompetition($tAdress[2], 'CrossCompetition', 5, 100);
+        $trainingCompetition = new TrainingCompetition($tAdress[2], 'TrainingCompetition', 10, 8);
 
         echo $jumpComp->__toString() . "\n";
         echo $poneyGameComp->__toString() . "\n";
@@ -81,8 +82,8 @@ class StoryController {
         echo $trainingCompetition->__toString() . "\n";
 
         echo "\n Maintenant créons des managers à nos écuries pour que celle-ci puissent inscrire les chevaux et leurs cavaliers à ces compétitions (ils habiterons également dans l'écurie) \n";
-        $manager1 = new Manager('Benjamin LeManager1', $adresse1, $stable1);
-        $manager2 = new Manager('Ricardo LeManager2', $adresse2, $stable2);
+        $manager1 = new Manager('Benjamin LeManager1', $tAdress[0], $stable1);
+        $manager2 = new Manager('Ricardo LeManager2', $tAdress[1], $stable2);
         echo $manager1->__toString() . "\n";
         echo $manager2->__toString() . "\n";
 
@@ -94,10 +95,43 @@ class StoryController {
             echo "Erreur : {$e->getMessage()} \n";
         }
 
-        echo "\n Demandons lui maintenant d'inscrire un cavalier de son écurie, mais en lui demandant d'inscrire un de ces poney à un concours de saut\n";
+        echo "\n Demandons lui maintenant d'inscrire un cavalier de son écurie, mais en lui demandant d'inscrire un de ces poney à un concours de saut (ce qui n'est pas possible)\n";
         try {
             $equiInscription = [$arrayEquine[10]];
             $manager1->registerRiderToCompetion($rider1, $jumpComp, $equiInscription);
+        } catch (Exception $e){
+            echo "Erreur : {$e->getMessage()} \n";
+        }
+        echo "\n Demandons lui maintenant d'inscrire 3 équidés à une compétition qui n'a pas une quantité d'eau suffisante \n";
+        try {
+            $equiInscription = [$arrayEquine[0], $arrayEquine[5], $arrayEquine[7]];
+            $manager1->registerRiderToCompetion($rider1, $trainingCompetition, $equiInscription);
+        } catch (Exception $e){
+            echo "Erreur : {$e->getMessage()} \n";
+        }
+        echo "\n Maitenant, laissons inscrire le manager1 trois bons équidés et ensuite demandons au manager2 d'en inscrire 3 autres, dans une compétition à 5 places maximum \n";
+        try {
+            $equiInscription = [$arrayEquine[0], $arrayEquine[5], $arrayEquine[7]];
+            $manager1->registerRiderToCompetion($rider1, $crossComeptition, $equiInscription);
+        } catch (Exception $e){
+            echo "Erreur : {$e->getMessage()} \n";
+        }
+        try {
+            $equiInscription = [$arrayEquine[1], $arrayEquine[3], $arrayEquine[6]];
+            $manager2->registerRiderToCompetion($rider2, $crossComeptition, $equiInscription);
+        } catch (Exception $e){
+            echo "Erreur : {$e->getMessage()} \n";
+        }
+        echo "\n Le manager2 ne va finalement inscrire qu'un seul cheval pour être dans le rêgle, et ensuite nous allons demander au manager1 de réinscrire un équidé qu'il a deja inscrit \n";
+        try {
+            $equiInscription = [$arrayEquine[1],];
+            $manager2->registerRiderToCompetion($rider2, $crossComeptition, $equiInscription);
+        } catch (Exception $e){
+            echo "Erreur : {$e->getMessage()} \n";
+        }
+        try {
+            $equiInscription = [$arrayEquine[0]];
+            $manager1->registerRiderToCompetion($rider1, $crossComeptition, $equiInscription);
         } catch (Exception $e){
             echo "Erreur : {$e->getMessage()} \n";
         }

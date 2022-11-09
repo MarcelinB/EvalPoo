@@ -1,11 +1,25 @@
 <?php
 namespace App\Model;
 
+use Exception;
+
 class Adress {
 
+    /**
+     * @var int
+     */
     protected int $number;
+    /**
+     * @var string
+     */
     protected string $street;
+    /**
+     * @var int
+     */
     protected int $postCode;
+    /**
+     * @var string
+     */
     protected string $city;
 
     /**
@@ -16,11 +30,15 @@ class Adress {
      */
     public function __construct(int $number, string $street, int $postCode, string $city)
     {
-        $this->number = $number;
-        $this->street = $street;
-        $this->postCode = $postCode;
-        $this->city = $city;
+        $this->setNumber($number);
+        $this->setStreet($street);
+        $this->setPostCode($postCode);
+        $this->setCity($city);
     }
+
+    /**
+     * @return string
+     */
     public function __toString():string {
         return "{$this->getNumber()} {$this->getStreet()} {$this->getPostCode()} {$this->getCity()}";
     }

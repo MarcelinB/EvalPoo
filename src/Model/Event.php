@@ -39,10 +39,19 @@ abstract class Event implements CompetitionValidity {
         $this->setMaxWater($maxWater);
     }
 
+    /**
+     * @return string
+     */
     public function __toString(){
         return "Nom : {$this->getName()}, Adresse : {$this->getAdress()->__toString()}, PartipantsMax : {$this->getMaxCommitments()}, EauMax : {$this->getMaxWater()}";
     }
 
+    /**
+     *
+     * @param Equine $equine
+     * @param array $arrayEquine
+     * @return bool
+     */
     abstract function checkEquineValidity(Equine $equine, array $arrayEquine): bool;
 
     /**
@@ -77,7 +86,7 @@ abstract class Event implements CompetitionValidity {
             foreach ($arrayEquine as $equine){
                 if($this->checkEquineValidity($equine, $arrayEquine)){
                     $this->participatingEquine[] = $equine;
-                    echo "{$equine->getName()} inscrit \n";
+                    echo "{$equine->getName()} (ID:{$equine->getId()}) inscrit \n";
                 }
             }
         }

@@ -7,6 +7,10 @@ class Pony extends Equine implements PoneyGame, Training {
     {
         parent::__construct($color, $water, $name);
     }
+
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return "Race : Poney, Nom : {$this->getName()}, ID : {$this->getId()}, Couleur : {$this->getColor()}";

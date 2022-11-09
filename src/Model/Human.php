@@ -10,8 +10,8 @@ abstract class Human {
      */
     public function __construct(string $name, Adress $adress)
     {
-        $this->name = $name;
-        $this->adress = $adress;
+        $this->setName($name);
+        $this->setName($adress);
     }
 
     /**

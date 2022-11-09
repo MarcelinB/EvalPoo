@@ -16,6 +16,10 @@ class Manager extends Human implements ManagerPermission {
     }
 
     /**
+     * Check if the rider can be regitered for the event
+     * @param Rider $rider
+     * @param Event $event
+     * @return bool
      * @throws Exception
      */
     public function checkValidityRegistration(Rider $rider, Event $event):bool{
@@ -25,6 +29,10 @@ class Manager extends Human implements ManagerPermission {
     }
 
     /**
+     * Register a rider for an event if he can
+     * @param Rider $rider
+     * @param Event $event
+     * @param array $arrayEquine
      * @throws Exception
      */
     public function registerRiderToCompetion(Rider $rider, Event $event, array $arrayEquine):void{
@@ -50,7 +58,4 @@ class Manager extends Human implements ManagerPermission {
         $this->stable = $stable;
         return $this;
     }
-
-
-
 }
