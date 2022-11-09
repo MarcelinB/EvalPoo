@@ -12,7 +12,10 @@ require_once __DIR__ . "/../src/app.php";
 
 
 $story = new StoryController();
-$story->aGoodStoryForVincentBray();
+try {
+    $story->aGoodStoryForVincentBray();
+} catch (Exception $e) {
+}
 
 
 /*$adresse = new Adress(15, 'rue de la mort', 14000, 'Paris');

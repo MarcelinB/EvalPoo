@@ -11,6 +11,10 @@ class Manager extends Human implements ManagerPermission {
         $this->setStable($stable);
     }
 
+    public function __toString():string{
+        return "Nom : {$this->getName()}, Adresse : {$this->getAdress()->__toString()}, Ecurie : {$this->getStable()->getName()} ";
+    }
+
     /**
      * @throws Exception
      */
@@ -23,9 +27,9 @@ class Manager extends Human implements ManagerPermission {
     /**
      * @throws Exception
      */
-    public function registerRiderToCompetion(Rider $rider, Event $event):void{
+    public function registerRiderToCompetion(Rider $rider, Event $event, array $arrayEquine):void{
         if($this->checkValidityRegistration($rider, $event)) {
-            $event->subscribeEquine($rider->getMyEquine());
+            $event->subscribeEquine($arrayEquine);
         }
     }
 

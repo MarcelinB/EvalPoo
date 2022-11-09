@@ -20,7 +20,7 @@ class Rider extends Human {
     }
 
     public function __toString():string{
-        return "Je suis {$this->getName()}, mon adresse est {$this->getAdress()->__toString()} je travail à l'écurie {$this->getStable()->getName()} et j'ai " . count($this->myEquine) . " équidés {$this->myEquineToString()} \n";
+        return "\n Je suis {$this->getName()}, mon adresse est {$this->getAdress()->__toString()} je travail à l'écurie {$this->getStable()->getName()} et j'ai " . count($this->myEquine) . " équidés {$this->myEquineToString()} \n";
     }
 
     /** Return a string with rider's horses  */
@@ -28,7 +28,7 @@ class Rider extends Human {
         $tab = $this->myEquine;
         $str = '';
         foreach ($tab as $t){
-            $str .= " -> \n {$t->__toString()}";
+            $str .= "\n {$t->__toString()}";
         }
         if (count($tab) === 0){
             return '';
